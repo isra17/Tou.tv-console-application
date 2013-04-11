@@ -146,25 +146,24 @@ class ToutvConsoleApp():
                 if result.Emission is not None:
 
                     print("\tEmission:")
-                    print("\t\t" + result.Emission.Title)
+                    print("\t\t" + result.Emission.get('Title'))
 
-                    if result.Emission.Description:
-                        description = textwrap.wrap(result.Emission.Description, 100)
+                    if result.Emission.get('Description'):
+                        description = textwrap.wrap(result.Emission.get('Description'), 100)
                         for line in description:
                             print("\t\t\t" + line)
 
                 if result.Episode is not None:
                     print("\tEpisode:\n")
+                    if result.Episode.get('CategoryId') is not None:
+                        print("\t\tEmission ID: " + str(result.Episode.get('CategoryId')))
 
-                    if result.Episode.CategoryId is not None:
-                        print("\t\tEmission ID: " + str(result.Episode.CategoryId))
+                    if result.Episode.get('Id') is not None:
+                        print("\t\tEpisode ID: " + str(result.Episode.get('Id')))
 
-                    if result.Episode.Id is not None:
-                        print("\t\tEpisode ID: " + str(result.Episode.Id))
-
-                    print("\t\t" + result.Episode.Title + ":")
-                    if result.Episode.Description:
-                        description = textwrap.wrap(result.Episode.Description, 100)
+                    print("\t\t" + result.Episode.get('Title') + ":")
+                    if result.Episode.get('Description'):
+                        description = textwrap.wrap(result.Episode.get('Description'), 100)
                         for line in description:
                             print("\t\t\t" + line)
 
